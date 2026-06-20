@@ -4,9 +4,16 @@ import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
+# you're creating a Flask application object.
+# app
+# ├── route()
+# ├── run()
+# ├── config
+# ├── error handling
+# └── request processing
 
 model= joblib.load('ids_model.pkl')
-label_encoder= joblib.load('label encoder.pkl')
+label_encoder= joblib.load('label_encoder.pkl')
 feature_names = joblib.load('feature_names.pkl')
 
 ATTACK_MAPPING = {
@@ -18,7 +25,6 @@ ATTACK_MAPPING = {
 }
 
 @app.route('/predict', methods=['POST'])
-
 def predict_attack():
     try:
         data = request.json
